@@ -110,6 +110,9 @@ public class PathTestService {
         }
     }
 
+    /**
+     * 断言测试
+     */
     @Test
     public void test06() {
         int a = 10;
