@@ -76,6 +76,80 @@
             <artifactId>spring-context</artifactId>
             <version>4.3.7.RELEASE</version>
         </dependency>
+
+        <!-- zkclient客户端 -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.2.0</version>
+        </dependency>
+
+        <!-- 邮件发送 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+
+        <!-- 阿里大于短信发送sdk包 -->
+        <dependency>
+            <groupId>com.taobao</groupId>
+            <artifactId>sdk.java.auto</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- quartz依赖 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <!-- 提供高层抽象API简化ZooKeeper的使用，更重要的是封装了管理到ZooKeeper集群的连接以及重试机制的复杂性，是Curator对外提供的接口 -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- 构建在Curator Framework框架之上，实现了原生ZooKeeper中的分布式工具特征recipes -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- 封装操作原生ZooKeeper的底层，包括连接，重试，集群等 -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
     </dependencies>
 
 

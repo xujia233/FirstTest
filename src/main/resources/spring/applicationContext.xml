@@ -13,6 +13,8 @@
     <!-- 添加包扫描路径 -->
     <context:component-scan base-package="service"/>
 
+    <bean id="staticClassTest" class="service.StaticClassTest"/>
+
     <!-- 国际化 -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">

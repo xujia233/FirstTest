@@ -1,19 +1,22 @@
 package service;
 
+import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.SimpleTimeZone;
-import java.util.TimeZone;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by xujia on 2019/2/18
  */
+@Slf4j
 public class TimeTest {
 
     @Test
@@ -115,5 +118,38 @@ public class TimeTest {
         double minute = 20;
         double interval = date + hour/60;
         System.out.println(interval);
+    }
+
+    @Test
+    public void test07() {
+        String str = "variable.code";
+        if (str.startsWith("variable")) {
+            str = str.substring(9);
+            System.out.println(str);
+        }
+    }
+
+    @Test
+    public void test08 () {
+        Pattern pattern = Pattern.compile("\\$\\{(.+?)}");
+        Matcher matcher = pattern.matcher("${ticket.variable.code}");
+        if (matcher.find()) {
+            System.out.println("yes");
+        }
+    }
+
+    @Test
+    public void test09() {
+//        String str = "fk";
+//        String str1 = "fk1";
+//        log.info("参数 str:{},str1:{}",str, str1);
+//        String uuid = "638696d6afd74c21a160241f087dbbfa";
+//        if (uuid.matches("(\\w{8}(\\w{4}){3}\\w{12}?)")) {
+//            System.out.println(true);
+//
+//        }
+        List<String> strings = Lists.newArrayList("1","1","2");
+        System.out.println(strings.stream().distinct().collect(Collectors.toList()));
+
     }
 }

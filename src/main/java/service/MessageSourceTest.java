@@ -18,8 +18,8 @@ public class MessageSourceTest {
     public void test01() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext.xml");
         MessageSource messageSource = (MessageSource) context.getBean("messageSource");
-        String info1 = messageSource.getMessage("hello",null, Locale.getDefault());
-        String info2 = messageSource.getMessage("hello",null, Locale.US);
+        String info1 = messageSource.getMessage("hello", null, Locale.getDefault());
+        String info2 = messageSource.getMessage("hello", null, Locale.US);
         System.out.println("zh_CN info1 :" + info1);
         System.out.println("en_US info2 :" + info2);
     }
@@ -65,7 +65,7 @@ public class MessageSourceTest {
 /**
  * 语言设置线程
  */
-class ThreadTest implements Runnable{
+class ThreadTest implements Runnable {
 
     private String language;
 

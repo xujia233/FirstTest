@@ -42,7 +42,7 @@ public class DeathLockTest {
     }
 
     @Test
-    public void test01 () {
+    public void test01() {
         Thread thread1 = new Thread(new ThreadTest(true));
         Thread thread2 = new Thread(new ThreadTest(false));
         thread1.start();

@@ -5,6 +5,7 @@ import entity.User;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -79,6 +80,14 @@ public class CollectionTest {
                 )
         );
         System.out.println("after :" + users);
+    }
+
+    @Test
+    public void test06 () {
+        List<String> list = Lists.newArrayList("1","2","1");
+        Set<String> s = new HashSet<>();
+        s.addAll(list);
+        System.out.println(s);
     }
 
 
