@@ -87,9 +87,9 @@ public class TimeTest {
     public void test04 () throws Exception{
         String s = "2019-02-19T05:49:07.911Z";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        //sdf.setTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()));
-        Calendar calendar = Calendar.getInstance(new SimpleTimeZone(8, "CST"));
-        sdf.setCalendar(calendar);
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT+00:00"));
+//        Calendar calendar = Calendar.getInstance(new SimpleTimeZone(8, "CST"));
+//        sdf.setCalendar(calendar);
         try {
 //            Calendar calendar = Calendar.getInstance();
 //            calendar.setTime(sdf.parse(s));

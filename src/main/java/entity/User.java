@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -47,6 +48,8 @@ public class User implements Serializable,Cloneable {
     private boolean flag;
     private List<String> str;
     private Dog dog;
+    private Boolean can;
+    private Map<String, String> map;
 
     public Dog getDog() {
         return dog;
@@ -91,6 +94,30 @@ public class User implements Serializable,Cloneable {
 
     public void setStr(List<String> str) {
         this.str = str;
+    }
+
+    public Boolean getCan() {
+        return can;
+    }
+
+    public void setCan(Boolean can) {
+        this.can = can;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
+    }
+
+    public User(String id, String name, boolean flag, List<String> str, Map<String, String> map) {
+        this.id = id;
+        this.name = name;
+        this.flag = flag;
+        this.str = str;
+        this.map = map;
     }
 
     public User() {}

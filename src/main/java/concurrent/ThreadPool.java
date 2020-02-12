@@ -73,4 +73,27 @@ public class ThreadPool implements Serializable {
             return sum;
         }
     }
+
+    @Test
+    public void test12() {
+        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
+        executorService.submit(() ->{
+            try {
+                Thread.sleep(3000);
+                System.out.println("异步线程执行完毕");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        // 平滑的关闭线程池，线程池不再接受新的任务，等待已经提交的线程执行完成（包括提交正在执行以及提交未执行）便关闭
+        executorService.shutdown();
+
+
+        System.out.println("主线程执行完");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

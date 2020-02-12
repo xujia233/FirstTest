@@ -22,8 +22,9 @@ public class LeaderByCurator {
     /**
      * 集群以逗号隔开
      */
-    private static final String ZK_ADDRESS = "10.1.61.165:2181";
+    private static final String ZK_ADDRESS = "10.1.62.134:2181";
     private static final String ZK_LOCK_PATH = "/zktest/lock0";
+    private static boolean isLeader;
 
     public static void main(String[] args) throws InterruptedException {
         // 首先连接zk RetryNTimes：指定重连次数的重试策略，这里是重连10次，每次间隔5s
@@ -44,24 +45,26 @@ public class LeaderByCurator {
         try {
             String name = Thread.currentThread().getName();
             // acquire方法支持同线程重入，获取不到锁会一直阻塞，这里为了测试同时设置超时时间3s  <一般实际开发时不需要指定超时时长，不符合分布式锁业务需求>
-            if (mutex.acquire(3, TimeUnit.SECONDS)) {
+            if (mutex.acquire(0, TimeUnit.SECONDS)) {
+                isLeader = true;
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 System.out.println(simpleDateFormat.format(new Date()) + "," + name + " hold lock");
 
                 System.out.println(client.getChildren().forPath(ZK_LOCK_PATH));
 
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 System.out.println(simpleDateFormat.format(new Date()) + "," + name + " release lock");
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // 当设置的超时时间小于线程执行时间时，其余线程在阻塞等待超时时间后尝试去获取锁时获取失败，删除对应节点，不竞争下次锁直接返回并抛出异常。
-            try {
-                mutex.release();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                if (isLeader)
+//                    mutex.release();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
     }
 }

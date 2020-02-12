@@ -26,19 +26,18 @@ public class Lock {
      * 可以简单的认为synchronized锁对象维护了一个等待队列，当执行了wait方法将被放入等待队列中，当另一个线程执行notify时，会唤醒等待队列中的线程
      * @throws InterruptedException
      */
-    public  void lock() throws InterruptedException{
+    public synchronized void lock() throws InterruptedException{
         Thread curThread = Thread.currentThread();
         while (isLocked && curThread != thread) {
             System.out.println(curThread.getName() + "调用wait()，被阻塞");
             wait();
         }
-
         count ++;
         isLocked = true;
         thread = curThread;
     }
 
-    public  void unlock() {
+    public synchronized void unlock() {
         if (Thread.currentThread() == thread) {
             count --;
             if (count == 0){
