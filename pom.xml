@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.2.2</version>
+            <version>2.3.2</version>
         </dependency>
 
         <!-- 提供高层抽象API简化ZooKeeper的使用，更重要的是封装了管理到ZooKeeper集群的连接以及重试机制的复杂性，是Curator对外提供的接口 -->
